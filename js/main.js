@@ -8,7 +8,7 @@ function handleCellClick(e) {
     // Identify the targeted cell
     const cell = e.target;
     // If the game is no longer active, don't do anything
-    if(!gameActive) return;
+    if(!gameActive || isCellMarked(cell)) return;
     // Place the player's mark
     placeMark(cell, currentPlayer);
     // Check for player win, loss, or draw
@@ -65,6 +65,10 @@ function checkWin(player) {
     return checker;
 }
 
+// Check if the cell is already marked
+function isCellMarked(cell) {
+    return cell.classList.contains("player-X") || cell.classList.contains("player-O");
+}
 
 
 function computerMove() {
